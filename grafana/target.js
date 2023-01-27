@@ -23,10 +23,10 @@
 var _ = require('underscore');
 var util = require('util');
 
-function Target() {
+function Target(opts) {
     if (arguments.length === 0) {
         throw new Error('Incorrect invocation of Target. ' +
-                        'Must provide at least one argument');
+            'Must provide at least one argument');
     }
     if (typeof arguments[0] === 'string') {
         // Format string
@@ -36,6 +36,7 @@ function Target() {
         this.source = arguments[0];
         this.func = arguments[1];
     }
+
 }
 
 Target.prototype.toString = function toString() {

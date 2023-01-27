@@ -32,6 +32,7 @@ var publish = require('./grafana/publish');
 var generateGraphId = require('./grafana/id');
 var config = require('./grafana/config');
 var Annotations = require('./grafana/annotations');
+var DataSource = require('./grafana/datasource')
 
 module.exports = {
     Dashboard: Dashboard,
@@ -43,6 +44,7 @@ module.exports = {
     Condition,
     Annotations: Annotations,
     Target: Target,
+    DataSource: DataSource,
     publish: publish,
     generateGraphId: generateGraphId,
     configure: config.configure

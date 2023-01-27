@@ -29,6 +29,7 @@ function Dashboard(opts) {
     this.state = {};
     this._init(opts);
     this._initRows(opts);
+    this._initPanels(opts);
     this._initLinks(opts);
     this._initTemplating(opts);
     this._initAnnotations(opts);
@@ -63,6 +64,19 @@ Dashboard.prototype._initRows = function _initRows(opts) {
     if (opts.rows) {
         opts.rows.forEach(function r(row) {
             self.addRow(row);
+        });
+    }
+};
+
+Dashboard.prototype._initPanels = function _initPanels(opts) {
+    var self = this;
+
+    this.panels = [];
+    this.state.panels = [];
+
+    if (opts.panels) {
+        opts.panels.forEach(function r(panel) {
+            self.addPanel(panel);
         });
     }
 };
@@ -108,6 +122,10 @@ Dashboard.prototype.addRow = function addRow(row) {
     this.rows.push(row);
 };
 
+Dashboard.prototype.addPanel = function addPanel(panel) {
+    this.panels.push(panel);
+};
+
 Dashboard.prototype.addTemplate = function addTemplate(template) {
     this.state.templating.list.push(template.generate());
 };
@@ -118,7 +136,12 @@ Dashboard.prototype.addAnnotation = function addAnnotation(annotation) {
 
 Dashboard.prototype.generate = function generate() {
     // Generate jsons.
-    this.state.rows = this.rows.map(row => row.generate());
+    
+    for (const row of this.rows) {
+        this.state.panels.push.apply(this.state.panels, row.generate())
+    }
+    //this.state.panels = this.panels.map(panel => panel.generate());
+    //this.state.panels = this.panels.map(panel => panel.generate());
     this.state.links = this.links.map(link => {
       if (link instanceof ExternalLink) {
         return link.generate()

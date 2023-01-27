@@ -28,11 +28,19 @@ function Row(opts) {
 
     var state = {
       title: 'New row',
-      height: '250px',
+      id: 2,
       editable: true,
       collapse: false,
       panels: [],
-      showTitle: true
+      showTitle: true,
+      type: "row",
+      collapsed: false,
+      gridPos: {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
     };
 
     this.state = xtend(state, opts);
@@ -46,13 +54,12 @@ function Row(opts) {
 }
 
 Row.prototype.generate = function generate() {
-    var generatedJson = [];
+    var generatedJson = [this.state];
     this.panels.forEach(function generatePanelJson(panel) {
         generatedJson.push(panel.generate());
     });
 
-    this.state.panels = generatedJson;
-    return this.state;
+    return generatedJson;
 };
 
 Row.prototype.addPanel = function addPanel(panel) {

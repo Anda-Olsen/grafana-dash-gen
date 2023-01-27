@@ -33,7 +33,7 @@ function SingleStat(opts) {
         error: false,
         span: 12,
         editable: true,
-        type: 'singlestat',
+        type: 'stat',
         links: [],
         maxDataPoints: 100,
         interval: null,
@@ -66,7 +66,8 @@ function SingleStat(opts) {
             lineColor: 'rgb(31, 193, 58)',
             fillColor: 'rgba(134, 178, 214, 0.41)'
         },
-        datasource: 'graphite'
+        datasource: 'graphite',
+        fieldConfig: {}
     };
     this.state = defaults;
 
@@ -98,9 +99,7 @@ SingleStat.prototype.setTitle = function setTitle(title) {
 };
 
 SingleStat.prototype.addTarget = function addTarget(target) {
-    this.state.targets.push({
-        target: target.toString()
-    });
+    this.state.targets.push(target);
 };
 
 module.exports = SingleStat;

@@ -32,7 +32,7 @@ var configurations = {
     user: 'guest',
     group: 'guest',
     url: 'https://your.graphite.url.com/elasticsearch/grafana-dash/dashboard/',
-    cookie: 'auth-openid=',
+    //cookie: 'auth-openid=',
     headers: {}
 };
 

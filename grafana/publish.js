@@ -52,12 +52,13 @@ function publish(dashboard, opts) {
       resolution: "Must call grafana.configure before publishing"
     });
   }
-
+  
   if (!cfg.cookie) {
     throw errors.Misconfigured({
       invalidArg: "cookie",
       reason: "undefined"
     });
+     
   }
 
   const headers = cfg.headers || {};
