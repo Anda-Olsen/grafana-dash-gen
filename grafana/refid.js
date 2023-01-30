@@ -19,18 +19,14 @@
 // THE SOFTWARE.
 
 'use strict';
-var Graph = require('./graph');
-var SingleStat = require('./singlestat');
-var Text = require('./text');
-var Table = require('./table');
-var DashboardList = require('./dashboard_list');
-var TimeSeries = require('./timeseries');
 
-module.exports = {
-	Graph: Graph,
-	SingleStat: SingleStat,
-	Text: Text,
-	Table: Table,
-	DashboardList: DashboardList,
-	TimeSeries
-};
+// Used to provide unique if for
+// generated graphs
+
+var refId = 0;
+function generateRefId() {
+	refId = refId + 1;
+	return `A${refId}`;
+}
+
+module.exports = generateRefId;

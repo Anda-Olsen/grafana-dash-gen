@@ -22,26 +22,14 @@
 
 var generateGraphId = require('../id');
 
-function SingleStat(opts) {
+function TimeSeries(opts) {
     opts = opts || {};
     var self = this;
 
     var defaults = {
         id: generateGraphId(),
-        title: 'single stat',
-        targets: [],
-        error: false,
-        span: 12,
-        editable: true,
-        type: 'stat',
-        links: [],
-        maxDataPoints: 100,
-        interval: null,
-        cacheTimeout: null,
-        format: 'none',
-        prefix: '',
-        postfix: '',
-        nullText: null,
+        title: 'timeseries',
+        type: 'timeseries',
         valueMaps: [{
             value: 'null',
             op: '=',
@@ -90,20 +78,20 @@ function SingleStat(opts) {
     }
 }
 
-SingleStat.prototype.generate = function generate() {
+TimeSeries.prototype.generate = function generate() {
     return this.state;
 };
 
-SingleStat.prototype.setTitle = function setTitle(title) {
+TimeSeries.prototype.setTitle = function setTitle(title) {
     this.state.title = title;
 };
 
-SingleStat.prototype.addTarget = function addTarget(target) {
+TimeSeries.prototype.addTarget = function addTarget(target) {
     this.state.targets.push(target);
 };
 
-SingleStat.prototype.addAlert = function addAlert(alert) {
+TimeSeries.prototype.addAlert = function addAlert(alert) {
     this.state.alert = alert.generate();
 };
 
-module.exports = SingleStat;
+module.exports = TimeSeries;

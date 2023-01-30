@@ -21,6 +21,7 @@
 'use strict';
 
 var generateGraphId = require('./id');
+var Target = require('./target');
 
 function DataSource(opts) {
     opts = opts || {};

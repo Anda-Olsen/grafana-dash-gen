@@ -31,10 +31,11 @@
    }
   },
   {
-   "id": 2,
+   "id": 18,
    "title": "Voltage",
    "targets": [
     {
+     "id": 2,
      "datasource": {
       "type": "influxdb",
       "uid": "P3CAD03FA1CCF7906"
@@ -56,7 +57,7 @@
      "measurement": "pbat1",
      "orderByTime": "ASC",
      "policy": "default",
-     "refId": "A",
+     "refId": "A1",
      "resultFormat": "time_series",
      "select": [
       [
@@ -72,7 +73,10 @@
        }
       ]
      ],
-     "tags": []
+     "tags": [],
+     "params": [
+      "pbat1_string1_voltage"
+     ]
     }
    ],
    "error": false,
@@ -121,7 +125,7 @@
     "defaults": {
      "color": {
       "fixedColor": "rgb(31, 193, 58)",
-      "mode": "fixed"
+      "mode": "thresholds"
      },
      "mappings": [
       {
@@ -138,25 +142,36 @@
       "mode": "absolute",
       "steps": [
        {
-        "color": "green",
+        "color": "red",
         "value": null
        },
        {
-        "color": "red",
-        "value": 80
+        "color": "rgb(234, 184, 57)",
+        "value": 200
+       },
+       {
+        "color": "rgb(31, 193, 58)",
+        "value": 210
        }
       ]
      },
      "unit": "volt"
     },
     "overrides": []
+   },
+   "gridPos": {
+    "h": 5,
+    "w": 3,
+    "x": 0,
+    "y": 1
    }
   },
   {
-   "id": 3,
+   "id": 19,
    "title": "Current",
    "targets": [
     {
+     "id": 3,
      "datasource": {
       "type": "influxdb",
       "uid": "P3CAD03FA1CCF7906"
@@ -178,7 +193,7 @@
      "measurement": "pbat1",
      "orderByTime": "ASC",
      "policy": "default",
-     "refId": "A",
+     "refId": "A2",
      "resultFormat": "time_series",
      "select": [
       [
@@ -194,7 +209,10 @@
        }
       ]
      ],
-     "tags": []
+     "tags": [],
+     "params": [
+      "pbat1_string1_amp"
+     ]
     }
    ],
    "error": false,
@@ -269,16 +287,23 @@
        }
       ]
      },
-     "unit": "ampere"
+     "unit": "amp"
     },
     "overrides": []
+   },
+   "gridPos": {
+    "h": 5,
+    "w": 3,
+    "x": 3,
+    "y": 1
    }
   },
   {
-   "id": 4,
+   "id": 20,
    "title": "Status",
    "targets": [
     {
+     "id": 4,
      "datasource": {
       "type": "influxdb",
       "uid": "P3CAD03FA1CCF7906"
@@ -300,7 +325,7 @@
      "measurement": "pbat1",
      "orderByTime": "ASC",
      "policy": "default",
-     "refId": "A",
+     "refId": "A3",
      "resultFormat": "time_series",
      "select": [
       [
@@ -316,7 +341,10 @@
        }
       ]
      ],
-     "tags": []
+     "tags": [],
+     "params": [
+      "pbat1_string1_status"
+     ]
     }
    ],
    "error": false,
@@ -365,83 +393,79 @@
     "defaults": {
      "color": {
       "fixedColor": "rgb(31, 193, 58)",
-      "mode": "fixed"
+      "mode": "thresholds"
      },
      "mappings": [
       {
        "options": {
+        "0": {
+         "text": "Floating charge"
+        },
         "1": {
          "text": "Equalizing charge"
         },
         "2": {
          "text": "Discharge"
         },
+        "3": {
+         "text": "Standing"
+        },
         "4": {
          "text": "Abnormal"
         }
        },
        "type": "value"
-      },
-      {
-       "options": {
-        "from": 3,
-        "result": {
-         "text": "Standing"
-        },
-        "to": 3
-       },
-       "type": "range"
-      },
-      {
-       "options": {
-        "from": 0,
-        "result": {
-         "text": "Floating charge"
-        },
-        "to": 0
-       },
-       "type": "range"
       }
      ],
      "thresholds": {
       "mode": "absolute",
       "steps": [
        {
-        "color": "green",
+        "color": "rgb(31, 193, 58)",
         "value": null
        },
        {
-        "color": "red",
-        "value": 80
+        "color": "rgb(55, 135, 45)",
+        "value": 0
+       },
+       {
+        "color": "rgb(31, 96, 196)",
+        "value": 1
+       },
+       {
+        "color": "rgb(224, 180, 0)",
+        "value": 2
+       },
+       {
+        "color": "rgb(250, 100, 0)",
+        "value": 3
+       },
+       {
+        "color": "rgb(196, 22, 42)",
+        "value": 4
        }
       ]
      },
      "unit": ""
     },
     "overrides": []
-   }
-  },
-  {
-   "title": "String 2",
-   "id": 556,
-   "editable": true,
-   "collapse": false,
-   "panels": [],
-   "showTitle": true,
-   "type": "row",
-   "collapsed": false,
+   },
+   "options": {
+    "graphMode": "none"
+   },
    "gridPos": {
-    "h": 1,
-    "w": 24,
-    "x": 0,
-    "y": 0
+    "h": 5,
+    "w": 3,
+    "x": 6,
+    "y": 1
    }
   },
   {
-   "id": 5,
-   "title": "Voltage",
+   "id": 21,
+   "title": "Battery Voltage",
    "targets": [
     {
+     "id": 9,
      "datasource": {
       "type": "influxdb",
       "uid": "P3CAD03FA1CCF7906"
@@ -463,13 +487,13 @@
      "measurement": "pbat1",
      "orderByTime": "ASC",
      "policy": "default",
-     "refId": "A",
+     "refId": "A8",
      "resultFormat": "time_series",
      "select": [
       [
        {
         "params": [
-         "pbat1_string2_voltage"
+         "pbat1_string1_maxVoltage"
         ],
         "type": "field"
        },
@@ -479,7 +503,101 @@
        }
       ]
      ],
-     "tags": []
+     "tags": [],
+     "params": [
+      "pbat1_string1_maxVoltage"
+     ],
+     "alias": "Maximum"
+    },
+    {
+     "id": 8,
+     "datasource": {
+      "type": "influxdb",
+      "uid": "P3CAD03FA1CCF7906"
+     },
+     "groupBy": [
+      {
+       "params": [
+        "10s"
+       ],
+       "type": "time"
+      },
+      {
+       "params": [
+        "null"
+       ],
+       "type": "fill"
+      }
+     ],
+     "measurement": "pbat1",
+     "orderByTime": "ASC",
+     "policy": "default",
+     "refId": "A7",
+     "resultFormat": "time_series",
+     "select": [
+      [
+       {
+        "params": [
+         "pbat1_string1_minVoltage"
+        ],
+        "type": "field"
+       },
+       {
+        "params": [],
+        "type": "distinct"
+       }
+      ]
+     ],
+     "tags": [],
+     "params": [
+      "pbat1_string1_minVoltage"
+     ],
+     "alias": "Minimum"
+    },
+    {
+     "id": 10,
+     "datasource": {
+      "type": "influxdb",
+      "uid": "P3CAD03FA1CCF7906"
+     },
+     "groupBy": [
+      {
+       "params": [
+        "10s"
+       ],
+       "type": "time"
+      },
+      {
+       "params": [
+        "null"
+       ],
+       "type": "fill"
+      }
+     ],
+     "measurement": "pbat1",
+     "orderByTime": "ASC",
+     "policy": "default",
+     "refId": "A9",
+     "resultFormat": "time_series",
+     "select": [
+      [
+       {
+        "params": [
+         "pbat1_string1_averageVoltage"
+        ],
+        "type": "field"
+       },
+       {
+        "params": [],
+        "type": "distinct"
+       }
+      ]
+     ],
+     "tags": [],
+     "params": [
+      "pbat1_string1_averageVoltage"
+     ],
+     "alias": "Average"
     }
    ],
    "error": false,
@@ -557,13 +675,25 @@
      "unit": "volt"
     },
     "overrides": []
+   },
+   "options": {
+    "orientation": "horizontal",
+    "textMode": "value_and_name",
+    "graphMode": "none"
+   },
+   "gridPos": {
+    "h": 5,
+    "w": 3,
+    "x": 0,
+    "y": 6
    }
   },
   {
-   "id": 6,
-   "title": "Current",
+   "id": 22,
+   "title": "Battery Resistance",
    "targets": [
     {
+     "id": 12,
      "datasource": {
       "type": "influxdb",
       "uid": "P3CAD03FA1CCF7906"
@@ -585,13 +715,13 @@
      "measurement": "pbat1",
      "orderByTime": "ASC",
      "policy": "default",
-     "refId": "A",
+     "refId": "A11",
      "resultFormat": "time_series",
      "select": [
       [
        {
         "params": [
-         "pbat1_string2_amp"
+         "pbat1_string1_maxResistance"
         ],
         "type": "field"
        },
@@ -601,7 +731,101 @@
        }
       ]
      ],
-     "tags": []
+     "tags": [],
+     "params": [
+      "pbat1_string1_maxResistance"
+     ],
+     "alias": "Maximum"
+    },
+    {
+     "id": 11,
+     "datasource": {
+      "type": "influxdb",
+      "uid": "P3CAD03FA1CCF7906"
+     },
+     "groupBy": [
+      {
+       "params": [
+        "10s"
+       ],
+       "type": "time"
+      },
+      {
+       "params": [
+        "null"
+       ],
+       "type": "fill"
+      }
+     ],
+     "measurement": "pbat1",
+     "orderByTime": "ASC",
+     "policy": "default",
+     "refId": "A10",
+     "resultFormat": "time_series",
+     "select": [
+      [
+       {
+        "params": [
+         "pbat1_string1_minResistance"
+        ],
+        "type": "field"
+       },
+       {
+        "params": [],
+        "type": "distinct"
+       }
+      ]
+     ],
+     "tags": [],
+     "params": [
+      "pbat1_string1_minResistance"
+     ],
+     "alias": "Minimum"
+    },
+    {
+     "id": 13,
+     "datasource": {
+      "type": "influxdb",
+      "uid": "P3CAD03FA1CCF7906"
+     },
+     "groupBy": [
+      {
+       "params": [
+        "10s"
+       ],
+       "type": "time"
+      },
+      {
+       "params": [
+        "null"
+       ],
+       "type": "fill"
+      }
+     ],
+     "measurement": "pbat1",
+     "orderByTime": "ASC",
+     "policy": "default",
+     "refId": "A12",
+     "resultFormat": "time_series",
+     "select": [
+      [
+       {
+        "params": [
+         "pbat1_string1_averageResistance"
+        ],
+        "type": "field"
+       },
+       {
+        "params": [],
+        "type": "distinct"
+       }
+      ]
+     ],
+     "tags": [],
+     "params": [
+      "pbat1_string1_averageResistance"
+     ],
+     "alias": "Average"
     }
    ],
    "error": false,
@@ -676,16 +900,28 @@
        }
       ]
      },
-     "unit": "ampere"
+     "unit": "ohm"
     },
     "overrides": []
+   },
+   "options": {
+    "orientation": "horizontal",
+    "textMode": "value_and_name",
+    "graphMode": "none"
+   },
+   "gridPos": {
+    "h": 5,
+    "w": 3,
+    "x": 3,
+    "y": 6
    }
   },
   {
-   "id": 7,
-   "title": "Status",
+   "id": 23,
+   "title": "Battery Temperature",
    "targets": [
     {
+     "id": 15,
      "datasource": {
       "type": "influxdb",
       "uid": "P3CAD03FA1CCF7906"
@@ -707,13 +943,13 @@
      "measurement": "pbat1",
      "orderByTime": "ASC",
      "policy": "default",
-     "refId": "A",
+     "refId": "A14",
      "resultFormat": "time_series",
      "select": [
       [
        {
         "params": [
-         "pbat1_string2_status"
+         "pbat1_string1_maxBatteryTemp"
         ],
         "type": "field"
        },
@@ -723,7 +959,101 @@
        }
       ]
      ],
-     "tags": []
+     "tags": [],
+     "params": [
+      "pbat1_string1_maxBatteryTemp"
+     ],
+     "alias": "Maximum"
+    },
+    {
+     "id": 14,
+     "datasource": {
+      "type": "influxdb",
+      "uid": "P3CAD03FA1CCF7906"
+     },
+     "groupBy": [
+      {
+       "params": [
+        "10s"
+       ],
+       "type": "time"
+      },
+      {
+       "params": [
+        "null"
+       ],
+       "type": "fill"
+      }
+     ],
+     "measurement": "pbat1",
+     "orderByTime": "ASC",
+     "policy": "default",
+     "refId": "A13",
+     "resultFormat": "time_series",
+     "select": [
+      [
+       {
+        "params": [
+         "pbat1_string1_minBatteryTemp"
+        ],
+        "type": "field"
+       },
+       {
+        "params": [],
+        "type": "distinct"
+       }
+      ]
+     ],
+     "tags": [],
+     "params": [
+      "pbat1_string1_minBatteryTemp"
+     ],
+     "alias": "Minimum"
+    },
+    {
+     "id": 16,
+     "datasource": {
+      "type": "influxdb",
+      "uid": "P3CAD03FA1CCF7906"
+     },
+     "groupBy": [
+      {
+       "params": [
+        "10s"
+       ],
+       "type": "time"
+      },
+      {
+       "params": [
+        "null"
+       ],
+       "type": "fill"
+      }
+     ],
+     "measurement": "pbat1",
+     "orderByTime": "ASC",
+     "policy": "default",
+     "refId": "A15",
+     "resultFormat": "time_series",
+     "select": [
+      [
+       {
+        "params": [
+         "pbat1_string1_averageTemperature"
+        ],
+        "type": "field"
+       },
+       {
+        "params": [],
+        "type": "distinct"
+       }
+      ]
+     ],
+     "tags": [],
+     "params": [
+      "pbat1_string1_averageTemperature"
+     ],
+     "alias": "Average"
     }
    ],
    "error": false,
@@ -777,37 +1107,12 @@
      "mappings": [
       {
        "options": {
-        "1": {
-         "text": "Equalizing charge"
-        },
-        "2": {
-         "text": "Discharge"
-        },
-        "4": {
-         "text": "Abnormal"
+        "match": "null",
+        "result": {
+         "text": "N/A"
         }
        },
-       "type": "value"
-      },
-      {
-       "options": {
-        "from": 3,
-        "result": {
-         "text": "Standing"
-        },
-        "to": 3
-       },
-       "type": "range"
-      },
-      {
-       "options": {
-        "from": 0,
-        "result": {
-         "text": "Floating charge"
-        },
-        "to": 0
-       },
-       "type": "range"
+       "type": "special"
       }
      ],
      "thresholds": {
@@ -823,9 +1128,1150 @@
        }
       ]
      },
+     "unit": "celsius"
+    },
+    "overrides": []
+   },
+   "options": {
+    "orientation": "horizontal",
+    "textMode": "value_and_name",
+    "graphMode": "none"
+   },
+   "gridPos": {
+    "h": 5,
+    "w": 3,
+    "x": 6,
+    "y": 6
+   }
+  },
+  {
+   "title": "String 1",
+   "id": 2,
+   "editable": true,
+   "collapse": false,
+   "panels": [],
+   "showTitle": true,
+   "type": "row",
+   "collapsed": false,
+   "gridPos": {
+    "h": 1,
+    "w": 24,
+    "x": 0,
+    "y": 0
+   }
+  },
+  {
+   "id": 18,
+   "title": "Voltage",
+   "targets": [
+    {
+     "id": 2,
+     "datasource": {
+      "type": "influxdb",
+      "uid": "P3CAD03FA1CCF7906"
+     },
+     "groupBy": [
+      {
+       "params": [
+        "10s"
+       ],
+       "type": "time"
+      },
+      {
+       "params": [
+        "null"
+       ],
+       "type": "fill"
+      }
+     ],
+     "measurement": "pbat1",
+     "orderByTime": "ASC",
+     "policy": "default",
+     "refId": "A1",
+     "resultFormat": "time_series",
+     "select": [
+      [
+       {
+        "params": [
+         "pbat1_string1_voltage"
+        ],
+        "type": "field"
+       },
+       {
+        "params": [],
+        "type": "distinct"
+       }
+      ]
+     ],
+     "tags": [],
+     "params": [
+      "pbat1_string1_voltage"
+     ]
+    }
+   ],
+   "error": false,
+   "span": 5,
+   "editable": true,
+   "type": "stat",
+   "links": [],
+   "maxDataPoints": 100,
+   "interval": null,
+   "cacheTimeout": null,
+   "format": "none",
+   "prefix": "",
+   "postfix": "",
+   "nullText": null,
+   "valueMaps": [
+    {
+     "value": "null",
+     "op": "=",
+     "text": "N/A"
+    }
+   ],
+   "nullPointMode": "connected",
+   "valueName": "current",
+   "prefixFontSize": "50%",
+   "valueFontSize": "80%",
+   "postfixFontSize": "50%",
+   "thresholds": "",
+   "colorBackground": false,
+   "colorValue": false,
+   "colors": [
+    "rgba(71, 212, 59, 0.4)",
+    "rgba(245, 150, 40, 0.73)",
+    "rgba(225, 40, 40, 0.59)"
+   ],
+   "sparkline": {
+    "show": true,
+    "full": true,
+    "lineColor": "rgb(31, 193, 58)",
+    "fillColor": "rgba(134, 178, 214, 0.41)"
+   },
+   "datasource": {
+    "type": "influxdb",
+    "uid": "P3CAD03FA1CCF7906"
+   },
+   "fieldConfig": {
+    "defaults": {
+     "color": {
+      "fixedColor": "rgb(31, 193, 58)",
+      "mode": "thresholds"
+     },
+     "mappings": [
+      {
+       "options": {
+        "match": "null",
+        "result": {
+         "text": "N/A"
+        }
+       },
+       "type": "special"
+      }
+     ],
+     "thresholds": {
+      "mode": "absolute",
+      "steps": [
+       {
+        "color": "red",
+        "value": null
+       },
+       {
+        "color": "rgb(234, 184, 57)",
+        "value": 200
+       },
+       {
+        "color": "rgb(31, 193, 58)",
+        "value": 210
+       }
+      ]
+     },
+     "unit": "volt"
+    },
+    "overrides": []
+   },
+   "gridPos": {
+    "h": 5,
+    "w": 3,
+    "x": 0,
+    "y": 1
+   }
+  },
+  {
+   "id": 19,
+   "title": "Current",
+   "targets": [
+    {
+     "id": 3,
+     "datasource": {
+      "type": "influxdb",
+      "uid": "P3CAD03FA1CCF7906"
+     },
+     "groupBy": [
+      {
+       "params": [
+        "10s"
+       ],
+       "type": "time"
+      },
+      {
+       "params": [
+        "null"
+       ],
+       "type": "fill"
+      }
+     ],
+     "measurement": "pbat1",
+     "orderByTime": "ASC",
+     "policy": "default",
+     "refId": "A2",
+     "resultFormat": "time_series",
+     "select": [
+      [
+       {
+        "params": [
+         "pbat1_string1_amp"
+        ],
+        "type": "field"
+       },
+       {
+        "params": [],
+        "type": "distinct"
+       }
+      ]
+     ],
+     "tags": [],
+     "params": [
+      "pbat1_string1_amp"
+     ]
+    }
+   ],
+   "error": false,
+   "span": 5,
+   "editable": true,
+   "type": "stat",
+   "links": [],
+   "maxDataPoints": 100,
+   "interval": null,
+   "cacheTimeout": null,
+   "format": "none",
+   "prefix": "",
+   "postfix": "",
+   "nullText": null,
+   "valueMaps": [
+    {
+     "value": "null",
+     "op": "=",
+     "text": "N/A"
+    }
+   ],
+   "nullPointMode": "connected",
+   "valueName": "current",
+   "prefixFontSize": "50%",
+   "valueFontSize": "80%",
+   "postfixFontSize": "50%",
+   "thresholds": "",
+   "colorBackground": false,
+   "colorValue": false,
+   "colors": [
+    "rgba(71, 212, 59, 0.4)",
+    "rgba(245, 150, 40, 0.73)",
+    "rgba(225, 40, 40, 0.59)"
+   ],
+   "sparkline": {
+    "show": true,
+    "full": true,
+    "lineColor": "rgb(31, 193, 58)",
+    "fillColor": "rgba(134, 178, 214, 0.41)"
+   },
+   "datasource": {
+    "type": "influxdb",
+    "uid": "P3CAD03FA1CCF7906"
+   },
+   "fieldConfig": {
+    "defaults": {
+     "color": {
+      "fixedColor": "rgb(31, 193, 58)",
+      "mode": "fixed"
+     },
+     "mappings": [
+      {
+       "options": {
+        "match": "null",
+        "result": {
+         "text": "N/A"
+        }
+       },
+       "type": "special"
+      }
+     ],
+     "thresholds": {
+      "mode": "absolute",
+      "steps": [
+       {
+        "color": "green",
+        "value": null
+       },
+       {
+        "color": "red",
+        "value": 80
+       }
+      ]
+     },
+     "unit": "amp"
+    },
+    "overrides": []
+   },
+   "gridPos": {
+    "h": 5,
+    "w": 3,
+    "x": 3,
+    "y": 1
+   }
+  },
+  {
+   "id": 20,
+   "title": "Status",
+   "targets": [
+    {
+     "id": 4,
+     "datasource": {
+      "type": "influxdb",
+      "uid": "P3CAD03FA1CCF7906"
+     },
+     "groupBy": [
+      {
+       "params": [
+        "10s"
+       ],
+       "type": "time"
+      },
+      {
+       "params": [
+        "null"
+       ],
+       "type": "fill"
+      }
+     ],
+     "measurement": "pbat1",
+     "orderByTime": "ASC",
+     "policy": "default",
+     "refId": "A3",
+     "resultFormat": "time_series",
+     "select": [
+      [
+       {
+        "params": [
+         "pbat1_string1_status"
+        ],
+        "type": "field"
+       },
+       {
+        "params": [],
+        "type": "distinct"
+       }
+      ]
+     ],
+     "tags": [],
+     "params": [
+      "pbat1_string1_status"
+     ]
+    }
+   ],
+   "error": false,
+   "span": 5,
+   "editable": true,
+   "type": "stat",
+   "links": [],
+   "maxDataPoints": 100,
+   "interval": null,
+   "cacheTimeout": null,
+   "format": "none",
+   "prefix": "",
+   "postfix": "",
+   "nullText": null,
+   "valueMaps": [
+    {
+     "value": "null",
+     "op": "=",
+     "text": "N/A"
+    }
+   ],
+   "nullPointMode": "connected",
+   "valueName": "current",
+   "prefixFontSize": "50%",
+   "valueFontSize": "80%",
+   "postfixFontSize": "50%",
+   "thresholds": "",
+   "colorBackground": false,
+   "colorValue": false,
+   "colors": [
+    "rgba(71, 212, 59, 0.4)",
+    "rgba(245, 150, 40, 0.73)",
+    "rgba(225, 40, 40, 0.59)"
+   ],
+   "sparkline": {
+    "show": true,
+    "full": true,
+    "lineColor": "rgb(31, 193, 58)",
+    "fillColor": "rgba(134, 178, 214, 0.41)"
+   },
+   "datasource": {
+    "type": "influxdb",
+    "uid": "P3CAD03FA1CCF7906"
+   },
+   "fieldConfig": {
+    "defaults": {
+     "color": {
+      "fixedColor": "rgb(31, 193, 58)",
+      "mode": "thresholds"
+     },
+     "mappings": [
+      {
+       "options": {
+        "0": {
+         "text": "Floating charge"
+        },
+        "1": {
+         "text": "Equalizing charge"
+        },
+        "2": {
+         "text": "Discharge"
+        },
+        "3": {
+         "text": "Standing"
+        },
+        "4": {
+         "text": "Abnormal"
+        }
+       },
+       "type": "value"
+      }
+     ],
+     "thresholds": {
+      "mode": "absolute",
+      "steps": [
+       {
+        "color": "rgb(31, 193, 58)",
+        "value": null
+       },
+       {
+        "color": "rgb(55, 135, 45)",
+        "value": 0
+       },
+       {
+        "color": "rgb(31, 96, 196)",
+        "value": 1
+       },
+       {
+        "color": "rgb(224, 180, 0)",
+        "value": 2
+       },
+       {
+        "color": "rgb(250, 100, 0)",
+        "value": 3
+       },
+       {
+        "color": "rgb(196, 22, 42)",
+        "value": 4
+       }
+      ]
+     },
      "unit": ""
     },
     "overrides": []
+   },
+   "options": {
+    "graphMode": "none"
+   },
+   "gridPos": {
+    "h": 5,
+    "w": 3,
+    "x": 6,
+    "y": 1
+   }
+  },
+  {
+   "id": 21,
+   "title": "Battery Voltage",
+   "targets": [
+    {
+     "id": 9,
+     "datasource": {
+      "type": "influxdb",
+      "uid": "P3CAD03FA1CCF7906"
+     },
+     "groupBy": [
+      {
+       "params": [
+        "10s"
+       ],
+       "type": "time"
+      },
+      {
+       "params": [
+        "null"
+       ],
+       "type": "fill"
+      }
+     ],
+     "measurement": "pbat1",
+     "orderByTime": "ASC",
+     "policy": "default",
+     "refId": "A8",
+     "resultFormat": "time_series",
+     "select": [
+      [
+       {
+        "params": [
+         "pbat1_string1_maxVoltage"
+        ],
+        "type": "field"
+       },
+       {
+        "params": [],
+        "type": "distinct"
+       }
+      ]
+     ],
+     "tags": [],
+     "params": [
+      "pbat1_string1_maxVoltage"
+     ],
+     "alias": "Maximum"
+    },
+    {
+     "id": 8,
+     "datasource": {
+      "type": "influxdb",
+      "uid": "P3CAD03FA1CCF7906"
+     },
+     "groupBy": [
+      {
+       "params": [
+        "10s"
+       ],
+       "type": "time"
+      },
+      {
+       "params": [
+        "null"
+       ],
+       "type": "fill"
+      }
+     ],
+     "measurement": "pbat1",
+     "orderByTime": "ASC",
+     "policy": "default",
+     "refId": "A7",
+     "resultFormat": "time_series",
+     "select": [
+      [
+       {
+        "params": [
+         "pbat1_string1_minVoltage"
+        ],
+        "type": "field"
+       },
+       {
+        "params": [],
+        "type": "distinct"
+       }
+      ]
+     ],
+     "tags": [],
+     "params": [
+      "pbat1_string1_minVoltage"
+     ],
+     "alias": "Minimum"
+    },
+    {
+     "id": 10,
+     "datasource": {
+      "type": "influxdb",
+      "uid": "P3CAD03FA1CCF7906"
+     },
+     "groupBy": [
+      {
+       "params": [
+        "10s"
+       ],
+       "type": "time"
+      },
+      {
+       "params": [
+        "null"
+       ],
+       "type": "fill"
+      }
+     ],
+     "measurement": "pbat1",
+     "orderByTime": "ASC",
+     "policy": "default",
+     "refId": "A9",
+     "resultFormat": "time_series",
+     "select": [
+      [
+       {
+        "params": [
+         "pbat1_string1_averageVoltage"
+        ],
+        "type": "field"
+       },
+       {
+        "params": [],
+        "type": "distinct"
+       }
+      ]
+     ],
+     "tags": [],
+     "params": [
+      "pbat1_string1_averageVoltage"
+     ],
+     "alias": "Average"
+    }
+   ],
+   "error": false,
+   "span": 5,
+   "editable": true,
+   "type": "stat",
+   "links": [],
+   "maxDataPoints": 100,
+   "interval": null,
+   "cacheTimeout": null,
+   "format": "none",
+   "prefix": "",
+   "postfix": "",
+   "nullText": null,
+   "valueMaps": [
+    {
+     "value": "null",
+     "op": "=",
+     "text": "N/A"
+    }
+   ],
+   "nullPointMode": "connected",
+   "valueName": "current",
+   "prefixFontSize": "50%",
+   "valueFontSize": "80%",
+   "postfixFontSize": "50%",
+   "thresholds": "",
+   "colorBackground": false,
+   "colorValue": false,
+   "colors": [
+    "rgba(71, 212, 59, 0.4)",
+    "rgba(245, 150, 40, 0.73)",
+    "rgba(225, 40, 40, 0.59)"
+   ],
+   "sparkline": {
+    "show": true,
+    "full": true,
+    "lineColor": "rgb(31, 193, 58)",
+    "fillColor": "rgba(134, 178, 214, 0.41)"
+   },
+   "datasource": {
+    "type": "influxdb",
+    "uid": "P3CAD03FA1CCF7906"
+   },
+   "fieldConfig": {
+    "defaults": {
+     "color": {
+      "fixedColor": "rgb(31, 193, 58)",
+      "mode": "fixed"
+     },
+     "mappings": [
+      {
+       "options": {
+        "match": "null",
+        "result": {
+         "text": "N/A"
+        }
+       },
+       "type": "special"
+      }
+     ],
+     "thresholds": {
+      "mode": "absolute",
+      "steps": [
+       {
+        "color": "green",
+        "value": null
+       },
+       {
+        "color": "red",
+        "value": 80
+       }
+      ]
+     },
+     "unit": "volt"
+    },
+    "overrides": []
+   },
+   "options": {
+    "orientation": "horizontal",
+    "textMode": "value_and_name",
+    "graphMode": "none"
+   },
+   "gridPos": {
+    "h": 5,
+    "w": 3,
+    "x": 0,
+    "y": 6
+   }
+  },
+  {
+   "id": 22,
+   "title": "Battery Resistance",
+   "targets": [
+    {
+     "id": 12,
+     "datasource": {
+      "type": "influxdb",
+      "uid": "P3CAD03FA1CCF7906"
+     },
+     "groupBy": [
+      {
+       "params": [
+        "10s"
+       ],
+       "type": "time"
+      },
+      {
+       "params": [
+        "null"
+       ],
+       "type": "fill"
+      }
+     ],
+     "measurement": "pbat1",
+     "orderByTime": "ASC",
+     "policy": "default",
+     "refId": "A11",
+     "resultFormat": "time_series",
+     "select": [
+      [
+       {
+        "params": [
+         "pbat1_string1_maxResistance"
+        ],
+        "type": "field"
+       },
+       {
+        "params": [],
+        "type": "distinct"
+       }
+      ]
+     ],
+     "tags": [],
+     "params": [
+      "pbat1_string1_maxResistance"
+     ],
+     "alias": "Maximum"
+    },
+    {
+     "id": 11,
+     "datasource": {
+      "type": "influxdb",
+      "uid": "P3CAD03FA1CCF7906"
+     },
+     "groupBy": [
+      {
+       "params": [
+        "10s"
+       ],
+       "type": "time"
+      },
+      {
+       "params": [
+        "null"
+       ],
+       "type": "fill"
+      }
+     ],
+     "measurement": "pbat1",
+     "orderByTime": "ASC",
+     "policy": "default",
+     "refId": "A10",
+     "resultFormat": "time_series",
+     "select": [
+      [
+       {
+        "params": [
+         "pbat1_string1_minResistance"
+        ],
+        "type": "field"
+       },
+       {
+        "params": [],
+        "type": "distinct"
+       }
+      ]
+     ],
+     "tags": [],
+     "params": [
+      "pbat1_string1_minResistance"
+     ],
+     "alias": "Minimum"
+    },
+    {
+     "id": 13,
+     "datasource": {
+      "type": "influxdb",
+      "uid": "P3CAD03FA1CCF7906"
+     },
+     "groupBy": [
+      {
+       "params": [
+        "10s"
+       ],
+       "type": "time"
+      },
+      {
+       "params": [
+        "null"
+       ],
+       "type": "fill"
+      }
+     ],
+     "measurement": "pbat1",
+     "orderByTime": "ASC",
+     "policy": "default",
+     "refId": "A12",
+     "resultFormat": "time_series",
+     "select": [
+      [
+       {
+        "params": [
+         "pbat1_string1_averageResistance"
+        ],
+        "type": "field"
+       },
+       {
+        "params": [],
+        "type": "distinct"
+       }
+      ]
+     ],
+     "tags": [],
+     "params": [
+      "pbat1_string1_averageResistance"
+     ],
+     "alias": "Average"
+    }
+   ],
+   "error": false,
+   "span": 5,
+   "editable": true,
+   "type": "stat",
+   "links": [],
+   "maxDataPoints": 100,
+   "interval": null,
+   "cacheTimeout": null,
+   "format": "none",
+   "prefix": "",
+   "postfix": "",
+   "nullText": null,
+   "valueMaps": [
+    {
+     "value": "null",
+     "op": "=",
+     "text": "N/A"
+    }
+   ],
+   "nullPointMode": "connected",
+   "valueName": "current",
+   "prefixFontSize": "50%",
+   "valueFontSize": "80%",
+   "postfixFontSize": "50%",
+   "thresholds": "",
+   "colorBackground": false,
+   "colorValue": false,
+   "colors": [
+    "rgba(71, 212, 59, 0.4)",
+    "rgba(245, 150, 40, 0.73)",
+    "rgba(225, 40, 40, 0.59)"
+   ],
+   "sparkline": {
+    "show": true,
+    "full": true,
+    "lineColor": "rgb(31, 193, 58)",
+    "fillColor": "rgba(134, 178, 214, 0.41)"
+   },
+   "datasource": {
+    "type": "influxdb",
+    "uid": "P3CAD03FA1CCF7906"
+   },
+   "fieldConfig": {
+    "defaults": {
+     "color": {
+      "fixedColor": "rgb(31, 193, 58)",
+      "mode": "fixed"
+     },
+     "mappings": [
+      {
+       "options": {
+        "match": "null",
+        "result": {
+         "text": "N/A"
+        }
+       },
+       "type": "special"
+      }
+     ],
+     "thresholds": {
+      "mode": "absolute",
+      "steps": [
+       {
+        "color": "green",
+        "value": null
+       },
+       {
+        "color": "red",
+        "value": 80
+       }
+      ]
+     },
+     "unit": "ohm"
+    },
+    "overrides": []
+   },
+   "options": {
+    "orientation": "horizontal",
+    "textMode": "value_and_name",
+    "graphMode": "none"
+   },
+   "gridPos": {
+    "h": 5,
+    "w": 3,
+    "x": 3,
+    "y": 6
+   }
+  },
+  {
+   "id": 23,
+   "title": "Battery Temperature",
+   "targets": [
+    {
+     "id": 15,
+     "datasource": {
+      "type": "influxdb",
+      "uid": "P3CAD03FA1CCF7906"
+     },
+     "groupBy": [
+      {
+       "params": [
+        "10s"
+       ],
+       "type": "time"
+      },
+      {
+       "params": [
+        "null"
+       ],
+       "type": "fill"
+      }
+     ],
+     "measurement": "pbat1",
+     "orderByTime": "ASC",
+     "policy": "default",
+     "refId": "A14",
+     "resultFormat": "time_series",
+     "select": [
+      [
+       {
+        "params": [
+         "pbat1_string1_maxBatteryTemp"
+        ],
+        "type": "field"
+       },
+       {
+        "params": [],
+        "type": "distinct"
+       }
+      ]
+     ],
+     "tags": [],
+     "params": [
+      "pbat1_string1_maxBatteryTemp"
+     ],
+     "alias": "Maximum"
+    },
+    {
+     "id": 14,
+     "datasource": {
+      "type": "influxdb",
+      "uid": "P3CAD03FA1CCF7906"
+     },
+     "groupBy": [
+      {
+       "params": [
+        "10s"
+       ],
+       "type": "time"
+      },
+      {
+       "params": [
+        "null"
+       ],
+       "type": "fill"
+      }
+     ],
+     "measurement": "pbat1",
+     "orderByTime": "ASC",
+     "policy": "default",
+     "refId": "A13",
+     "resultFormat": "time_series",
+     "select": [
+      [
+       {
+        "params": [
+         "pbat1_string1_minBatteryTemp"
+        ],
+        "type": "field"
+       },
+       {
+        "params": [],
+        "type": "distinct"
+       }
+      ]
+     ],
+     "tags": [],
+     "params": [
+      "pbat1_string1_minBatteryTemp"
+     ],
+     "alias": "Minimum"
+    },
+    {
+     "id": 16,
+     "datasource": {
+      "type": "influxdb",
+      "uid": "P3CAD03FA1CCF7906"
+     },
+     "groupBy": [
+      {
+       "params": [
+        "10s"
+       ],
+       "type": "time"
+      },
+      {
+       "params": [
+        "null"
+       ],
+       "type": "fill"
+      }
+     ],
+     "measurement": "pbat1",
+     "orderByTime": "ASC",
+     "policy": "default",
+     "refId": "A15",
+     "resultFormat": "time_series",
+     "select": [
+      [
+       {
+        "params": [
+         "pbat1_string1_averageTemperature"
+        ],
+        "type": "field"
+       },
+       {
+        "params": [],
+        "type": "distinct"
+       }
+      ]
+     ],
+     "tags": [],
+     "params": [
+      "pbat1_string1_averageTemperature"
+     ],
+     "alias": "Average"
+    }
+   ],
+   "error": false,
+   "span": 5,
+   "editable": true,
+   "type": "stat",
+   "links": [],
+   "maxDataPoints": 100,
+   "interval": null,
+   "cacheTimeout": null,
+   "format": "none",
+   "prefix": "",
+   "postfix": "",
+   "nullText": null,
+   "valueMaps": [
+    {
+     "value": "null",
+     "op": "=",
+     "text": "N/A"
+    }
+   ],
+   "nullPointMode": "connected",
+   "valueName": "current",
+   "prefixFontSize": "50%",
+   "valueFontSize": "80%",
+   "postfixFontSize": "50%",
+   "thresholds": "",
+   "colorBackground": false,
+   "colorValue": false,
+   "colors": [
+    "rgba(71, 212, 59, 0.4)",
+    "rgba(245, 150, 40, 0.73)",
+    "rgba(225, 40, 40, 0.59)"
+   ],
+   "sparkline": {
+    "show": true,
+    "full": true,
+    "lineColor": "rgb(31, 193, 58)",
+    "fillColor": "rgba(134, 178, 214, 0.41)"
+   },
+   "datasource": {
+    "type": "influxdb",
+    "uid": "P3CAD03FA1CCF7906"
+   },
+   "fieldConfig": {
+    "defaults": {
+     "color": {
+      "fixedColor": "rgb(31, 193, 58)",
+      "mode": "fixed"
+     },
+     "mappings": [
+      {
+       "options": {
+        "match": "null",
+        "result": {
+         "text": "N/A"
+        }
+       },
+       "type": "special"
+      }
+     ],
+     "thresholds": {
+      "mode": "absolute",
+      "steps": [
+       {
+        "color": "green",
+        "value": null
+       },
+       {
+        "color": "red",
+        "value": 80
+       }
+      ]
+     },
+     "unit": "celsius"
+    },
+    "overrides": []
+   },
+   "options": {
+    "orientation": "horizontal",
+    "textMode": "value_and_name",
+    "graphMode": "none"
+   },
+   "gridPos": {
+    "h": 5,
+    "w": 3,
+    "x": 6,
+    "y": 6
    }
   }
  ],

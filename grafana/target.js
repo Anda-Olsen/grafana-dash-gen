@@ -22,22 +22,61 @@
 
 var _ = require('underscore');
 var util = require('util');
+var generateGraphId = require('./id');
+var generateRefId = require('./refid');
 
 function Target(opts) {
-    if (arguments.length === 0) {
-        throw new Error('Incorrect invocation of Target. ' +
-            'Must provide at least one argument');
+    opts = opts || {};
+    var self = this;
+
+    var defaults = {
+        id: generateGraphId(),
+        datasource: {},
+        groupBy: [
+            {
+                "params": [
+                    "10s"
+                ],
+                "type": "time"
+            },
+            {
+                "params": [
+                    "null"
+                ],
+                "type": "fill"
+            }
+        ],
+        measurement: "",
+        orderByTime: "ASC",
+        policy: "default",
+        refId: generateRefId(),
+        resultFormat: "time_series",
+        select: [
+            [
+                {
+                    "params": opts['params'] || [],
+                    "type": "field"
+                },
+                {
+                    "params": [],
+                    "type": "distinct"
+                }
+            ]
+        ],
+        tags: []
     }
-    if (typeof arguments[0] === 'string') {
-        // Format string
-        this.source = util.format.apply(null, arguments);
-    } else {
-        // Another target
-        this.source = arguments[0];
-        this.func = arguments[1];
-    }
+    this.state = defaults;
+
+    // Overwrite defaults with custom values
+    Object.keys(opts).forEach(function eachOpt(opt) {
+        self.state[opt] = opts[opt];
+    });
 
 }
+
+Target.prototype.generate = function generate() {
+    return this.state;
+};
 
 Target.prototype.toString = function toString() {
     if (this.func) {
