@@ -23,14 +23,14 @@
 var _ = require('underscore');
 var util = require('util');
 var generateGraphId = require('./id');
-var generateRefId = require('./refid');
+var generateRefId = require('./uid');
 
 function Target(opts) {
     opts = opts || {};
     var self = this;
 
     var defaults = {
-        id: generateGraphId(),
+        //id: generateGraphId(),
         datasource: {},
         groupBy: [
             {

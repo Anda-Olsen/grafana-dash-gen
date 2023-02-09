@@ -29,6 +29,7 @@ var Alert = require('./grafana/alert/alert');
 var Condition = require('./grafana/alert/condition');
 var Templates = require('./grafana/templates');
 var publish = require('./grafana/publish');
+var publishAlerts = require('./grafana/publish-alerts');
 var generateGraphId = require('./grafana/id');
 var config = require('./grafana/config');
 var Annotations = require('./grafana/annotations');
@@ -46,6 +47,7 @@ module.exports = {
     Target: Target,
     DataSource: DataSource,
     publish: publish,
+    publishAlerts: publishAlerts,
     generateGraphId: generateGraphId,
     configure: config.configure
 };

@@ -1,22 +1,20 @@
+
+
 function Alert(opts) {
   opts = opts || {};
   this.conditions = [];
 
   this.state = {
-    name: 'Panel Title alert',
-    for: '15m',
-    frequency: '5m',
-    conditions: [],
-    message: '',
-    notifications: [],
-    executionErrorState: 'keep_state',
-    noDataState: 'keep_state',
-    alertRuleTags: {},
-    handler: 1,
-  };
+    "orgID": 1,
+    "data": [],
+    "noDataState": "NoData",
+    "execErrState": "Alerting",
+    "for": 300000000000,
+    "provenance": "api"
+  }
 
   this._init(opts);
-  this._initConditions(opts);
+  //this._initConditions(opts);
 }
 
 Alert.prototype._init = function _init(opts) {
@@ -42,7 +40,7 @@ Alert.prototype.addCondition = function addCondition(condition) {
 };
 
 Alert.prototype.generate = function generate() {
-  this.state.conditions = this.conditions.map(condition => condition.generate());
+  //this.state.conditions = this.conditions.map(condition => condition.generate());
   return this.state;
 };
 
