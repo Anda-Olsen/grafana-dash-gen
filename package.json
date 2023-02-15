@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Anda-Olsen/grafana-dash-gen.git"
+    "url": "git+https://github.com/anda-olsen/grafana-dash-gen.git"
   },
   "publishConfig": {
     "@Anda-Olsen:registry": "https://npm.pkg.github.com"
