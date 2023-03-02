@@ -36,6 +36,17 @@ function TimeSeries(opts) {
             text: 'N/A'
         }],
         nullPointMode: 'connected',
+        options: {
+            legend: {
+              calcs: [],
+              displayMode: "list",
+              placement: "bottom"
+            },
+            tooltip: {
+              mode: "multi",
+              sort: "none"
+            }
+          },
         valueName: 'current',
         prefixFontSize: '50%',
         valueFontSize: '80%',

@@ -40,13 +40,13 @@ Dashboard.prototype._init = function _init(opts) {
     this.state.id = opts.id || null;
     this.state.title = opts.title || 'Generated Grafana Dashboard';
     this.state.originalTitle = opts.originalTitle || 'Generated Dashboard';
-    this.state.tags = opts.tags || [];
+    this.state.tags = opts.tags || [this.state.title];
     this.state.style = opts.style || 'dark';
     this.state.timezone = opts.timezone || 'browser';
     this.state.editable = true;
     this.state.hideControls = !!opts.hideControls;
     this.state.sharedCrosshair = !!opts.sharedCrosshair;
-    this.state.refresh = opts.refresh || false;
+    this.state.refresh = opts.refresh || "5s";
     this.state.schemaVersion = opts.schemaVersion || 6;
     this.state.hideAllLegends = !!opts.hideAllLegends;
     this.state.time = opts.time || null;
@@ -119,6 +119,8 @@ Dashboard.prototype._initAnnotations = function _initAnnotations(opts) {
 };
 
 Dashboard.prototype.addRow = function addRow(row) {
+    let lastRow = this.rows[this.rows.length-1]
+    
     this.rows.push(row);
 };
 
@@ -136,9 +138,12 @@ Dashboard.prototype.addAnnotation = function addAnnotation(annotation) {
 
 Dashboard.prototype.generate = function generate() {
     // Generate jsons.
-    
     for (const row of this.rows) {
-        this.state.panels.push.apply(this.state.panels, row.generate())
+        let rowPanels = row.generate();
+        for (let panel of rowPanels) {
+            this.state.panels.push(panel);
+        }
+        //this.state.panels.push.apply(this.state.panels, row.generate())
     }
     //this.state.panels = this.panels.map(panel => panel.generate());
     //this.state.panels = this.panels.map(panel => panel.generate());

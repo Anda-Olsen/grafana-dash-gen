@@ -24,9 +24,25 @@
 // generated graphs
 
 var refId = 0;
-function generateRefId() {
+function generateUid() {
 	refId = refId + 1;
-	return `A${refId}`;
+	return convertNumberToId(refId);
 }
 
-module.exports = generateRefId;
+
+function convertNumberToId (number) {
+	var alphabet = 'abcdefghijklmnopqrstuvwxyz'.toUpperCase().split('');
+	
+	if (number < alphabet.length) {
+	  return alphabet[number];
+	} else {
+	  return (
+		convertNumberToId(Math.floor(number / alphabet.length) - 1)
+		+
+		convertNumberToId(number % alphabet.length)
+	  );
+	}
+  }
+
+
+module.exports = generateUid;

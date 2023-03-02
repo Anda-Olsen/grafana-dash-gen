@@ -103,6 +103,7 @@ function createFolder(folderObj, alerts) {
 }
 
 async function createAlerts(folderObj, alerts) {
+  console.log("create alerts");
   const cfg = config.getConfig();
   const headers = cfg.headers || {};
   const promises = [];
@@ -111,7 +112,7 @@ async function createAlerts(folderObj, alerts) {
     const j = request.jar();
     const cookie = request.cookie(cfg.cookie);
     j.setCookie(cookie, cfg.url);
-
+    console.log(alert);
     await request({
       url: cfg.alerts_url,
       method: "POST",
