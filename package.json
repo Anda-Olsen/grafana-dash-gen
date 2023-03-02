@@ -1,6 +1,6 @@
 {
   "name": "@anda-olsen/grafana-dash-gen",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A grafana dashboard generator. Forked from https://github.com/uber/grafana-dash-gen",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,7 @@
     "url": "git+https://github.com/anda-olsen/grafana-dash-gen.git"
   },
   "publishConfig": {
-    "@Anda-Olsen:registry": "https://npm.pkg.github.com"
+    "@anda-Olsen:registry": "https://npm.pkg.github.com"
   },
   "keywords": [
     "grafana",
