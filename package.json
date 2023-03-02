@@ -1,6 +1,6 @@
 {
   "name": "@anda-olsen/grafana-dash-gen",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A grafana dashboard generator. Forked from https://github.com/uber/grafana-dash-gen",
   "main": "index.js",
   "scripts": {
